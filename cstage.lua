@@ -55,7 +55,7 @@ function cwave:spawn_frame()
 			end
 			
 			local angle = math.random(360)
-			local distance = self.enemytank.range * (4/2) + math.randpm(self.enemytank.range * (1/4))
+			local distance = ((device_width + device_height) * (3/2)) + math.randpm(self.enemytank.range * (1/4))
 			
 			self.now_qty = self.now_qty + 1
 			self.spawn_qty = self.spawn_qty - 1
