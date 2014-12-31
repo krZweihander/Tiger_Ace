@@ -1,0 +1,181 @@
+<project>
+ <properties logicalWidth="320" mouseTouchOrder="0" logicalHeight="480" autorotation="0" orientation="1" architecture="1" iosDevice="0" retinaDisplay="0" mouseToTouch="1" encryptCode="0" touchToMouse="1" encryptAssets="0" fps="60" assetsOnly="1" scaleMode="0" packageName="lee.thomas.tiger_ace">
+  <imageScales/>
+ </properties>
+ <folder name="Sound">
+  <file source="Sound/120mm.mp3"/>
+  <file source="Sound/85mm.mp3"/>
+  <file source="Sound/88mm.mp3"/>
+  <file source="Sound/armor_pierce_01.wav"/>
+  <file source="Sound/armor_pierce_02.wav"/>
+  <file source="Sound/armor_pierce_03.wav"/>
+  <file source="Sound/ricochet_01.wav"/>
+  <file source="Sound/ricochet_02.wav"/>
+  <file source="Sound/ricochet_03.wav"/>
+  <file source="Sound/tank_destruction_01.wav"/>
+  <file source="Sound/tank_destruction_02.wav"/>
+  <file source="Sound/tank_destruction_03.wav"/>
+  <file source="Sound/tank_engine.mp3"/>
+ </folder>
+ <folder name="Sprite">
+  <folder name="BG">
+   <file source="Sprite/BG/background_1.png"/>
+   <file source="Sprite/BG/background_10.png"/>
+   <file source="Sprite/BG/background_100.png"/>
+   <file source="Sprite/BG/background_11.png"/>
+   <file source="Sprite/BG/background_12.png"/>
+   <file source="Sprite/BG/background_13.png"/>
+   <file source="Sprite/BG/background_14.png"/>
+   <file source="Sprite/BG/background_15.png"/>
+   <file source="Sprite/BG/background_16.png"/>
+   <file source="Sprite/BG/background_17.png"/>
+   <file source="Sprite/BG/background_18.png"/>
+   <file source="Sprite/BG/background_19.png"/>
+   <file source="Sprite/BG/background_2.png"/>
+   <file source="Sprite/BG/background_20.png"/>
+   <file source="Sprite/BG/background_21.png"/>
+   <file source="Sprite/BG/background_22.png"/>
+   <file source="Sprite/BG/background_23.png"/>
+   <file source="Sprite/BG/background_24.png"/>
+   <file source="Sprite/BG/background_25.png"/>
+   <file source="Sprite/BG/background_26.png"/>
+   <file source="Sprite/BG/background_27.png"/>
+   <file source="Sprite/BG/background_28.png"/>
+   <file source="Sprite/BG/background_29.png"/>
+   <file source="Sprite/BG/background_3.png"/>
+   <file source="Sprite/BG/background_30.png"/>
+   <file source="Sprite/BG/background_31.png"/>
+   <file source="Sprite/BG/background_32.png"/>
+   <file source="Sprite/BG/background_33.png"/>
+   <file source="Sprite/BG/background_34.png"/>
+   <file source="Sprite/BG/background_35.png"/>
+   <file source="Sprite/BG/background_36.png"/>
+   <file source="Sprite/BG/background_37.png"/>
+   <file source="Sprite/BG/background_38.png"/>
+   <file source="Sprite/BG/background_39.png"/>
+   <file source="Sprite/BG/background_4.png"/>
+   <file source="Sprite/BG/background_40.png"/>
+   <file source="Sprite/BG/background_41.png"/>
+   <file source="Sprite/BG/background_42.png"/>
+   <file source="Sprite/BG/background_43.png"/>
+   <file source="Sprite/BG/background_44.png"/>
+   <file source="Sprite/BG/background_45.png"/>
+   <file source="Sprite/BG/background_46.png"/>
+   <file source="Sprite/BG/background_47.png"/>
+   <file source="Sprite/BG/background_48.png"/>
+   <file source="Sprite/BG/background_49.png"/>
+   <file source="Sprite/BG/background_5.png"/>
+   <file source="Sprite/BG/background_50.png"/>
+   <file source="Sprite/BG/background_51.png"/>
+   <file source="Sprite/BG/background_52.png"/>
+   <file source="Sprite/BG/background_53.png"/>
+   <file source="Sprite/BG/background_54.png"/>
+   <file source="Sprite/BG/background_55.png"/>
+   <file source="Sprite/BG/background_56.png"/>
+   <file source="Sprite/BG/background_57.png"/>
+   <file source="Sprite/BG/background_58.png"/>
+   <file source="Sprite/BG/background_59.png"/>
+   <file source="Sprite/BG/background_6.png"/>
+   <file source="Sprite/BG/background_60.png"/>
+   <file source="Sprite/BG/background_61.png"/>
+   <file source="Sprite/BG/background_62.png"/>
+   <file source="Sprite/BG/background_63.png"/>
+   <file source="Sprite/BG/background_64.png"/>
+   <file source="Sprite/BG/background_65.png"/>
+   <file source="Sprite/BG/background_66.png"/>
+   <file source="Sprite/BG/background_67.png"/>
+   <file source="Sprite/BG/background_68.png"/>
+   <file source="Sprite/BG/background_69.png"/>
+   <file source="Sprite/BG/background_7.png"/>
+   <file source="Sprite/BG/background_70.png"/>
+   <file source="Sprite/BG/background_71.png"/>
+   <file source="Sprite/BG/background_72.png"/>
+   <file source="Sprite/BG/background_73.png"/>
+   <file source="Sprite/BG/background_74.png"/>
+   <file source="Sprite/BG/background_75.png"/>
+   <file source="Sprite/BG/background_76.png"/>
+   <file source="Sprite/BG/background_77.png"/>
+   <file source="Sprite/BG/background_78.png"/>
+   <file source="Sprite/BG/background_79.png"/>
+   <file source="Sprite/BG/background_8.png"/>
+   <file source="Sprite/BG/background_80.png"/>
+   <file source="Sprite/BG/background_81.png"/>
+   <file source="Sprite/BG/background_82.png"/>
+   <file source="Sprite/BG/background_83.png"/>
+   <file source="Sprite/BG/background_84.png"/>
+   <file source="Sprite/BG/background_85.png"/>
+   <file source="Sprite/BG/background_86.png"/>
+   <file source="Sprite/BG/background_87.png"/>
+   <file source="Sprite/BG/background_88.png"/>
+   <file source="Sprite/BG/background_89.png"/>
+   <file source="Sprite/BG/background_9.png"/>
+   <file source="Sprite/BG/background_90.png"/>
+   <file source="Sprite/BG/background_91.png"/>
+   <file source="Sprite/BG/background_92.png"/>
+   <file source="Sprite/BG/background_93.png"/>
+   <file source="Sprite/BG/background_94.png"/>
+   <file source="Sprite/BG/background_95.png"/>
+   <file source="Sprite/BG/background_96.png"/>
+   <file source="Sprite/BG/background_97.png"/>
+   <file source="Sprite/BG/background_98.png"/>
+   <file source="Sprite/BG/background_99.png"/>
+  </folder>
+  <folder name="GUI">
+   <file source="Sprite/GUI/aim.png" downsizing="1"/>
+   <file source="Sprite/GUI/aiming_line.png" downsizing="1"/>
+   <file source="Sprite/GUI/alert.png" downsizing="1"/>
+   <file source="Sprite/GUI/down.png" downsizing="1"/>
+   <file source="Sprite/GUI/fire.png" downsizing="1"/>
+   <file source="Sprite/GUI/left.png" downsizing="1"/>
+   <file source="Sprite/GUI/pause.png" downsizing="1"/>
+   <file source="Sprite/GUI/reload.png" downsizing="1"/>
+   <file source="Sprite/GUI/reload_button.png" downsizing="1"/>
+   <file source="Sprite/GUI/reloader.png" downsizing="1"/>
+   <file source="Sprite/GUI/right.png" downsizing="1"/>
+   <file source="Sprite/GUI/setting.png" downsizing="1"/>
+   <file source="Sprite/GUI/tr_left.png" downsizing="1"/>
+   <file source="Sprite/GUI/tr_right.png" downsizing="1"/>
+   <file source="Sprite/GUI/up.png" downsizing="1"/>
+  </folder>
+  <folder name="Item">
+   <file source="Sprite/Item/repairpack.png" downsizing="1"/>
+  </folder>
+  <folder name="Tank">
+   <folder name="T3485">
+    <file source="Sprite/Tank/T3485/cannon.png"/>
+    <file source="Sprite/Tank/T3485/cannon_destroyed.png"/>
+    <file source="Sprite/Tank/T3485/hull.png"/>
+    <file source="Sprite/Tank/T3485/hull_destroyed.png"/>
+    <file source="Sprite/Tank/T3485/turret.png"/>
+    <file source="Sprite/Tank/T3485/turret_destroyed.png"/>
+   </folder>
+   <folder name="Tiger">
+    <file source="Sprite/Tank/Tiger/cannon.png"/>
+    <file source="Sprite/Tank/Tiger/cannon_destroyed.png"/>
+    <file source="Sprite/Tank/Tiger/hull.png"/>
+    <file source="Sprite/Tank/Tiger/hull_destroyed.png"/>
+    <file source="Sprite/Tank/Tiger/turret.png"/>
+    <file source="Sprite/Tank/Tiger/turret_destroyed.png"/>
+   </folder>
+   <file source="Sprite/Tank/shell.png" downsizing="1"/>
+  </folder>
+ </folder>
+ <file source="cai.lua"/>
+ <file source="caim.lua"/>
+ <file source="calert.lua"/>
+ <file source="cengine.lua"/>
+ <file source="cgui.lua"/>
+ <file source="chealth.lua"/>
+ <file source="citem.lua"/>
+ <file source="cmessage.lua"/>
+ <file source="cparticle.lua"/>
+ <file source="creload.lua"/>
+ <file source="csetting.lua"/>
+ <file source="cshell.lua"/>
+ <file source="csound.lua"/>
+ <file source="cstage.lua"/>
+ <file source="ctank.lua"/>
+ <file source="cworld.lua"/>
+ <file source="dataSaver.lua"/>
+ <file source="main.lua"/>
+</project>
