@@ -267,7 +267,8 @@ end
 function reloading()
 	reload.active = true
 	reload:setAlpha(1)
-	gui.reload:setAlpha(guialpha)
+	--gui.reload:setAlpha(guialpha)
+	gui.reloading = true
 end
 
 function reload_tap()
@@ -278,7 +279,8 @@ function reloaded()
 	tiger.fired = false
 	reload.active = false
 	reload:setAlpha(0)
-	gui.reload:setAlpha(0)
+	--gui.reload:setAlpha(0)
+	gui.reloading = false
 end
 
 math.randomseed(os.time())

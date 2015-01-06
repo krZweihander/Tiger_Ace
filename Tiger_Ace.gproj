@@ -1,5 +1,5 @@
 <project>
- <properties logicalWidth="320" mouseTouchOrder="0" logicalHeight="480" autorotation="0" orientation="1" architecture="1" iosDevice="0" retinaDisplay="0" mouseToTouch="1" encryptCode="0" touchToMouse="1" encryptAssets="0" fps="60" assetsOnly="1" scaleMode="0" packageName="lee.thomas.tiger_ace">
+ <properties assetsOnly="1" scaleMode="0" fps="60" retinaDisplay="0" touchToMouse="1" packageName="lee.thomas.tiger_ace" logicalWidth="320" orientation="1" autorotation="0" mouseTouchOrder="0" encryptAssets="0" iosDevice="0" architecture="1" logicalHeight="480" mouseToTouch="1" encryptCode="0">
   <imageScales/>
  </properties>
  <folder name="Sound">
@@ -121,24 +121,28 @@
    <file source="Sprite/BG/background_99.png"/>
   </folder>
   <folder name="GUI">
-   <file source="Sprite/GUI/aim.png" downsizing="1"/>
-   <file source="Sprite/GUI/aiming_line.png" downsizing="1"/>
-   <file source="Sprite/GUI/alert.png" downsizing="1"/>
-   <file source="Sprite/GUI/down.png" downsizing="1"/>
-   <file source="Sprite/GUI/fire.png" downsizing="1"/>
-   <file source="Sprite/GUI/left.png" downsizing="1"/>
-   <file source="Sprite/GUI/pause.png" downsizing="1"/>
-   <file source="Sprite/GUI/reload.png" downsizing="1"/>
-   <file source="Sprite/GUI/reload_button.png" downsizing="1"/>
-   <file source="Sprite/GUI/reloader.png" downsizing="1"/>
-   <file source="Sprite/GUI/right.png" downsizing="1"/>
-   <file source="Sprite/GUI/setting.png" downsizing="1"/>
-   <file source="Sprite/GUI/tr_left.png" downsizing="1"/>
-   <file source="Sprite/GUI/tr_right.png" downsizing="1"/>
-   <file source="Sprite/GUI/up.png" downsizing="1"/>
+   <file downsizing="1" source="Sprite/GUI/aim.png"/>
+   <file downsizing="1" source="Sprite/GUI/aiming_line.png"/>
+   <file downsizing="1" source="Sprite/GUI/alert.png"/>
+   <file downsizing="1" source="Sprite/GUI/down.png"/>
+   <file downsizing="1" source="Sprite/GUI/fire.png"/>
+   <file downsizing="1" source="Sprite/GUI/left.png"/>
+   <file downsizing="1" source="Sprite/GUI/pause.png"/>
+   <file downsizing="1" source="Sprite/GUI/reload.png"/>
+   <file downsizing="1" source="Sprite/GUI/reload_button.png"/>
+   <file downsizing="1" source="Sprite/GUI/reloader.png"/>
+   <file downsizing="1" source="Sprite/GUI/right.png"/>
+   <file downsizing="1" source="Sprite/GUI/setting.png"/>
+   <file source="Sprite/GUI/stick_base-arrow.png"/>
+   <file source="Sprite/GUI/stick_base-arrow_turret.png"/>
+   <file source="Sprite/GUI/stick_base.png"/>
+   <file source="Sprite/GUI/stick_key.png"/>
+   <file downsizing="1" source="Sprite/GUI/tr_left.png"/>
+   <file downsizing="1" source="Sprite/GUI/tr_right.png"/>
+   <file downsizing="1" source="Sprite/GUI/up.png"/>
   </folder>
   <folder name="Item">
-   <file source="Sprite/Item/repairpack.png" downsizing="1"/>
+   <file downsizing="1" source="Sprite/Item/repairpack.png"/>
   </folder>
   <folder name="Tank">
    <folder name="T3485">
@@ -157,7 +161,7 @@
     <file source="Sprite/Tank/Tiger/turret.png"/>
     <file source="Sprite/Tank/Tiger/turret_destroyed.png"/>
    </folder>
-   <file source="Sprite/Tank/shell.png" downsizing="1"/>
+   <file downsizing="1" source="Sprite/Tank/shell.png"/>
   </folder>
  </folder>
  <file source="cai.lua"/>
