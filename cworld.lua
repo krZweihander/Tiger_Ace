@@ -93,9 +93,13 @@ function cworld:enter_frame(event)
 		
 		if v.destroyed then
 			v.sprite.texture:removeFromParent()
+			v.sprite.texture = nil
 			v.sprite:removeFromParent()
-			v:removeFromParent()
+			v.sprite = nil
 			tworld.world:destroyBody(v.body)
+			v.body = nil
+			v:removeFromParent()
+			v = nil
 			shells[i] = nil
 		end
 	end
@@ -116,6 +120,16 @@ function cworld:enter_frame(event)
 				tworld.world:destroyBody(v.armor.back)
 				tworld.world:destroyBody(v.armor.right)
 				tworld.world:destroyBody(v.armor.left)
+				v.hull = nil
+				v.left = nil
+				v.right = nil
+				v.turret = nil
+				v.cannon = nil
+				v.armor.front = nil
+				v.armor.back = nil
+				v.armor.right = nil
+				v.armor.left = nil
+				v.armor = nil
 				v.body_destroyed = true
 			end
 			v.deadtimer = v.deadtimer - 1
@@ -130,6 +144,13 @@ function cworld:enter_frame(event)
 				v.sprite.cannon.texture:removeFromParent()
 				v.sprite.cannon:removeFromParent()
 				v.sprite:removeFromParent()
+				v.sprite.hull.texture = nil
+				v.sprite.hull = nil
+				v.sprite.turret.texture = nil
+				v.sprite.turret = nil
+				v.sprite.cannon.texture = nil
+				v.sprite.cannon = nil
+				v.sprite = nil
 				v.destroyed_sprite.hull.texture:removeFromParent()
 				v.destroyed_sprite.hull:removeFromParent()
 				v.destroyed_sprite.turret.texture:removeFromParent()
@@ -137,7 +158,16 @@ function cworld:enter_frame(event)
 				v.destroyed_sprite:removeFromParent()
 				v.destroyed_sprite.cannon.texture:removeFromParent()
 				v.destroyed_sprite.cannon:removeFromParent()
+				v.destroyed_sprite:removeFromParent()
+				v.destroyed_sprite.hull.texture = nil
+				v.destroyed_sprite.hull = nil
+				v.destroyed_sprite.turret.texture = nil
+				v.destroyed_sprite.turret = nil
+				v.destroyed_sprite.cannon.texture = nil
+				v.destroyed_sprite.cannon = nil
+				v.destroyed_sprite = nil
 				v:removeFromParent()
+				v = nil
 				actors[i] = nil
 			end
 		end
@@ -147,6 +177,8 @@ function cworld:enter_frame(event)
 		v:enter_frame(event)
 		
 		if v.destroyed then
+			v.sprite:removeFromParent()
+			v.sprite = nil
 			v:removeFromParent()
 			particles[i] = nil
 		end
@@ -157,7 +189,9 @@ function cworld:enter_frame(event)
 		
 		if v.destroyed then
 			tworld.world:destroyBody(v.body)
+			v.body = nil
 			v.sprite:removeFromParent()
+			v.sprite = nil
 			v:removeFromParent()
 			items[i] = nil
 		end
@@ -167,7 +201,9 @@ function cworld:enter_frame(event)
 		v:enter_frame(event)
 		
 		if v.destroyed then
-			stage:removeChild(v)
+			v.text:removeFromParent()
+			v.text = nil
+			v:removeFromParent()
 			msgs[i] = nil
 		end
 	end
@@ -176,6 +212,9 @@ function cworld:enter_frame(event)
 		v:enter_frame(event)
 		
 		if v.destroyed then
+			v.sprite:removeFromParent()
+			v.sprite = nil
+			v:removeFromParent()
 			alerts[i] = nil
 		end
 	end
@@ -206,6 +245,10 @@ function cworld:enter_frame(event)
 	
 	tworld.world:step(1/(application:getFps()), 8, 3)
 	tworld.world:clearForces()
+	
+	collectgarbage()
+	collectgarbage("collect")
+	--print(math.floor(collectgarbage("count")))
 end
 
 function cworld:destroy()

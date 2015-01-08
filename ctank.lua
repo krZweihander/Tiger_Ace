@@ -499,3 +499,11 @@ function ctank:getPosition()
 	local x, y = self.hull:getPosition()
 	return x, y
 end
+
+ctank.getrotataion = ctank.getRotation
+function ctank:getRotation()
+	if self.destroyed then
+		return 0
+	end
+	return self.hull:getAngle()
+end

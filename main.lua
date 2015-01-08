@@ -237,7 +237,6 @@ function main()
 	
 	stage:addChild(tworld)
 	
-	gui = cgui.new()
 	reload = creload.new()
 	health = chealth.new()
 	
@@ -250,6 +249,8 @@ function main()
 	t3485_1 = ctank.new(tworld.world, s_t3485, device_width*(2/4), 50)
 	t3485_2 = ctank.new(tworld.world, s_t3485, device_width*(3/4), 50)]]--
 	
+	
+	gui = cgui.new()
 	aim = caim.new(tiger)
 	
 	wave = cwave.new(tiger, s_t3485, tworld.world)

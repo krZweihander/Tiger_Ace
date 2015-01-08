@@ -13,7 +13,7 @@ function csound:init(_sound, _volume)
 		self.channel:setVolume(volume_scale * self.volume)
 	end
 	
-	self:addEventListener(Event.COMPLETE, self.complete, self)
+	self.channel:addEventListener(Event.COMPLETE, self.complete, self)
 end
 
 function csound:setvolume(_volume)
@@ -41,7 +41,6 @@ function csound:destroy()
 end
 
 function csound:complete(event)
-	
 	self:destroy()
 	
 end

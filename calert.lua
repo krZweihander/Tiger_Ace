@@ -65,9 +65,6 @@ end
 function calert:destroy()
 	
 	self.destroyed = true
-	self.sprite:removeFromParent()
-	self:removeFromParent()
-	
 	self = nil
 	
 end

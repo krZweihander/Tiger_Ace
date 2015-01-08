@@ -98,7 +98,9 @@ function cwave:spawn()
 end
 
 function cwave:next_wave()
-
+	
+	
+	
 	self.enemy_qty = self.enemy_qty + math.random(self.plus_qty)
 	self.left_qty = self.enemy_qty
 	self.now_qty = 0

@@ -305,6 +305,10 @@ function cgui:init()
 	self.rtn.tr = 0
 	self.rtn.fireb = false
 	
+	self.trdesang = 0
+	
+	self.tank = tiger
+	
 	self:addEventListener(Event.TOUCHES_BEGIN, self.touches_begin, self)
 	self:addEventListener(Event.TOUCHES_MOVE, self.touches_move, self)
 	self:addEventListener(Event.TOUCHES_END, self.touches_end, self)
@@ -684,16 +688,18 @@ function cgui:rtnv()
 	
 	local mvang = math.deg(math.atan2(self.mvstickkey:getX() - self.mvstickbase:getX(), self.mvstickbase:getY() - self.mvstickkey:getY())) %360
 	local trang = math.deg(math.atan2(self.trstickkey:getX() - self.trstickbase:getX(), self.trstickbase:getY() - self.trstickkey:getY())) %360
-	local mvfactor = getdistance(self.mvstickkey:getX(), self.mvstickkey:getY(), self.mvstickbase:getX(), self.mvstickbase:getY()) / (self.mvstickbase:getWidth()/2)
+	local mvfactor = math.abs(getdistance(self.mvstickkey:getX(), self.mvstickkey:getY(), self.mvstickbase:getX(), self.mvstickbase:getY()) / (self.mvstickbase:getWidth()/2))
 	local tnmvang = (2-math.abs(math.tan(math.rad(mvang))))/2
-	local trfactor = (self.trstickkey:getX() - self.trstickbase:getX()) / (self.trstickbase:getWidth()/2)
-	
+	--local trfactor = (self.trstickkey:getX() - self.trstickbase:getX()) / (self.trstickbase:getWidth()/2)
+	local trfactor = math.abs(getdistance(self.trstickkey:getX(), self.trstickkey:getY(), self.trstickbase:getX(), self.trstickbase:getY()) / (self.trstickbase:getWidth()/2))
+	local mtang = math.deg(self.tank:getRotation())%360
+	local ttang = math.deg(self.tank.turret:getAngle())%360
 	self.rtn.left = 0
 	self.rtn.right = 0
 	self.rtn.tr = 0
 	self.rtn.fireb = false
 	
-	if mvang>=60 and mvang<=120 then
+	--[[if mvang>=60 and mvang<=120 then
 		self.rtn.left = mvfactor
 		self.rtn.right = -mvfactor
 	elseif mvang>=240 and mvang<=300 then
@@ -711,9 +717,100 @@ function cgui:rtnv()
 	elseif mvang>=270 and mvang<=360 then
 		self.rtn.right = mvfactor
 		self.rtn.left = tnmvang * mvfactor
+	end]]--
+	
+	if mvfactor ~= 0 then
+		local mvtdiff = 0 - mtang
+		local mvdesangle = mvang + mvtdiff
+		if mvdesangle < 0 then
+			mvdesangle = mvdesangle + 360
+		end
+		if mvdesangle%360 >= 240 or mvdesangle%360 <= 120 then
+			if math.abs(mvang - mtang) > 45 then
+				if mvdesangle > 180 then
+					self.rtn.left = -mvfactor
+					self.rtn.right = mvfactor
+				else
+					self.rtn.left = mvfactor
+					self.rtn.right = -mvfactor
+				end
+			elseif math.abs(mvang - mtang) > 30 then
+				if mvdesangle > 180 then
+					self.rtn.left = 0
+					self.rtn.right = mvfactor
+				else
+					self.rtn.left = mvfactor
+					self.rtn.right = 0
+				end
+			elseif math.abs(mvang - mtang) > 15 then
+				if mvdesangle > 180 then
+					self.rtn.left = mvfactor/2
+					self.rtn.right = mvfactor
+				else
+					self.rtn.left = mvfactor
+					self.rtn.right = mvfactor/2
+				end
+			else
+				self.rtn.left = mvfactor
+				self.rtn.right = mvfactor
+			end
+		else
+			mtang = (mtang + 180) % 360
+			mvtdiff = 0 - mtang
+			mvdesangle = mvang + mvtdiff
+			if mvdesangle < 0 then
+				mvdesangle = mvdesangle + 360
+			end
+			if math.abs(mvang - mtang) > 45 then
+				if mvdesangle > 180 then
+					self.rtn.left = -mvfactor
+					self.rtn.right = mvfactor
+				else
+					self.rtn.left = mvfactor
+					self.rtn.right = -mvfactor
+				end
+			elseif math.abs(mvang - mtang) > 30 then
+				if mvdesangle > 180 then
+					self.rtn.left = -mvfactor
+					self.rtn.right = -mvfactor/2
+				else
+					self.rtn.left = -mvfactor/2
+					self.rtn.right = -mvfactor
+				end
+			elseif math.abs(mvang - mtang) > 15 then
+				if mvdesangle > 180 then
+					self.rtn.left = -mvfactor
+					self.rtn.right = 0
+				else
+					self.rtn.left = 0
+					self.rtn.right = -mvfactor
+				end
+			else
+				self.rtn.left = -mvfactor
+				self.rtn.right = -mvfactor
+			end
+		end
 	end
 	
-	self.rtn.tr = -trfactor
+	--[[if trfactor ~= 0 then
+		local trdiff = 0 - ttang
+		local trdesangle = trang + trdiff
+		if trdesangle < 0 then
+			trdesangle = trdesangle + 360
+		end
+		if math.abs(trang - ttang) > 2 then
+			if trdesangle > 180 then
+				self.rtn.tr = trfactor
+			else
+				self.rtn.tr = -trfactor
+			end
+			self.trdesang = trang
+		end
+	end]]--
+	
+	local rtrfactor = math.cos(math.rad(trang - ttang - 90)) * trfactor
+	self.trstickarrow:setRotation(ttang)
+	self.rtn.tr = -rtrfactor
 	
 	if self.trstick_tap and not self.trstick_start then
 		if self.reloading then
