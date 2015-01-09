@@ -6,7 +6,7 @@ stage:setOrientation(Stage.LANDSCAPE_LEFT)
 device_width = application:getDeviceHeight()
 device_height = application:getDeviceWidth()
 
-worldscale = 8 * (device_height/320)
+worldscale = 10 * (device_height/320)
 scale = 0.25 * (device_height/320)
 volume_scale = 0.3
 
@@ -69,7 +69,7 @@ s_tiger.pen = 130
 s_tiger.health = 1800
 s_tiger.damage = 300
 s_tiger.range = 1600 * scale
-s_tiger.speed = 7 --* scale
+s_tiger.speed = 5.5 --* scale
 s_tiger.accel = 1.5 --* scale
 s_tiger.tspeed = 0.8
 s_tiger.deadtimer = 300
@@ -109,7 +109,7 @@ s_t3485.pen = 128
 s_t3485.health = 500
 s_t3485.damage = 120
 s_t3485.range = 1000 * scale
-s_t3485.speed = 8 --* scale
+s_t3485.speed = 10 --* scale
 s_t3485.accel = 1.8 --* scale
 s_t3485.tspeed = 0.9
 s_t3485.deadtimer = 130

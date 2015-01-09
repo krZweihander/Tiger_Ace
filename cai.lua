@@ -5,23 +5,13 @@ function cai:init()
 	
 	self.range = 0
 	
-	self.phase = 0
 	self.target = nil
 	
-	self.funcs = {}
 	self.target = nil
 	
 	self.destroyed = false
 	
 	self.timer1 = 200
-	
-	self.funcs[0] = cai.phase0
-	self.funcs[1] = cai.phase1
-	self.funcs[2] = cai.phase2
-	self.funcs[3] = cai.phase3
-	self.funcs[4] = cai.phase4
-	self.funcs[5] = cai.phase5
-	self.funcs[6] = cai.phase6
 	
 end
 
@@ -42,7 +32,23 @@ function cai:enter_frame(mtank)
 		return
 	end
 	
-	self:phasecheck(self.target)
+	self.tank.rtn.left = 0
+	self.tank.rtn.right = 0
+	
+	self.tank.rtn.tr = 0
+	
+	self.tank.rtn.fireb = false
+	
+	self.tank.aicount = self.tank.aicount - 1
+	
+	if self.tank.aicount <= 0 then
+		self:phasecheck(self.target)
+		self.tank.applyingtimer = self.tank.applyingtimer - 1
+		if self.tank.applyingtimer <= 0 then
+			self.tank.aicount = self.tank.defaicount
+			self.tank.applyingtimer = self.tank.defapplyingtimer
+		end
+	end
 	
 	--self.funcs[self.tank.phase](self, self.target)
 	self.tank:setStatue(self:setStatue())
@@ -54,21 +60,19 @@ end
 
 function cai:phasecheck(target)
 	
-	self.tank.rtn.left = 0
+	--[[self.tank.rtn.left = 0
 	self.tank.rtn.right = 0
 	
 	self.tank.rtn.tr = 0
 	
-	self.tank.rtn.fireb = false
+	self.tank.rtn.fireb = false]]--
 	
 	if not target then
-		self.tank.phase = 0
 		return
 	end
 	
 	if target.destroyed then
 		target = nil
-		self.tank.phase = 0
 		return
 	end
 	

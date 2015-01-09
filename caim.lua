@@ -41,13 +41,9 @@ function caim:enter_frame()
 	
 	local cx, cy = self.tank.turret:getPosition()
 	local ta = self.tank.turret:getAngle()
-	local lta = math.rad(gui.trdesang)
 	local ts = self.tank.range / 4
 	local dx, dy = ts*(5/3) * math.sin(ta), -ts*(5/3) * math.cos(ta)
-	local ldx, ldy = ts*(5/3) * math.sin(lta), -ts*(5/3) * math.cos(lta)
 	
-	--self.aiming_line:setRotation(math.deg(lta))
-	--self.aiming_line:setPosition(cx + ldx, cy + ldy)
 	self.aiming_line:setRotation(math.deg(ta))
 	--self.aim:setPosition(cx + dx, cy + dy)
 	self:setPosition(cx + dx, cy + dy)

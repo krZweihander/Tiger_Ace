@@ -23,69 +23,9 @@ function cgui:init()
 	self.pause_gui:setAlpha(0)
 	self:addChild(self.pause_gui)
 	
-	--[[self.up = Sprite.new()
-	self.up:setAlpha(0)--guialpha)
-	self.up:setScale(guiscale)
-	self.up.sprite = Bitmap.new(Texture.new("Sprite/GUI/up.png"))
-	self.up:addSprite(self.up.sprite)
-	self.move_gui:addChild(self.up)
-	
-	self.down = Sprite.new()
-	self.down:setAlpha(0)--guialpha)
-	self.down:setScale(guiscale)
-	self.down.sprite = Bitmap.new(Texture.new("Sprite/GUI/down.png"))
-	self.down:addSprite(self.down.sprite)
-	self.move_gui:addChild(self.down)
-	
-	self.right = Sprite.new()
-	self.right:setAlpha(0)--guialpha)
-	self.right:setScale(guiscale)
-	self.right.sprite = Bitmap.new(Texture.new("Sprite/GUI/right.png"))
-	self.right:addSprite(self.right.sprite)
-	self.move_gui:addChild(self.right)
-	
-	self.left = Sprite.new()
-	self.left:setAlpha(0)--guialpha)
-	self.left:setScale(guiscale)
-	self.left.sprite = Bitmap.new(Texture.new("Sprite/GUI/left.png"))
-	self.left:addSprite(self.left.sprite)
-	self.move_gui:addChild(self.left)
-	
-	self.upleft = Sprite.new()
-	self.upleft:setAlpha(0)--guialpha)
-	self.upleft:setScale(guiscale)
-	self.upleft.sprite = Bitmap.new(Texture.new("Sprite/GUI/up.png"))
-	self.upleft.sprite:setScale(4/5)
-	self.upleft:addSprite(self.upleft.sprite)
-	self.upleft:setRotation(-45)
-	self.move_gui:addChild(self.upleft)
-	
-	self.upright = Sprite.new()
-	self.upright:setAlpha(0)--guialpha)
-	self.upright:setScale(guiscale)
-	self.upright.sprite = Bitmap.new(Texture.new("Sprite/GUI/up.png"))
-	self.upright.sprite:setScale(4/5)
-	self.upright:addSprite(self.upright.sprite)
-	self.upright:setRotation(45)
-	self.move_gui:addChild(self.upright)
-	
-	self.downleft = Sprite.new()
-	self.downleft:setAlpha(0)--guialpha)
-	self.downleft:setScale(guiscale)
-	self.downleft.sprite = Bitmap.new(Texture.new("Sprite/GUI/down.png"))
-	self.downleft.sprite:setScale(4/5)
-	self.downleft:addSprite(self.downleft.sprite)
-	self.downleft:setRotation(45)
-	self.move_gui:addChild(self.downleft)
-	
-	self.downright = Sprite.new()
-	self.downright:setAlpha(0)--guialpha)
-	self.downright:setScale(guiscale)
-	self.downright.sprite = Bitmap.new(Texture.new("Sprite/GUI/down.png"))
-	self.downright.sprite:setScale(4/5)
-	self.downright:addSprite(self.downright.sprite)
-	self.downright:setRotation(-45)
-	self.move_gui:addChild(self.downright)]]--
+	self.guide_gui = Sprite.new()
+	self.guide_gui:setAlpha(0)
+	self:addChild(self.guide_gui)
 	
 	self.mvstickarrow = Sprite.new()
 	self.mvstickarrow:setAlpha(0)
@@ -112,20 +52,6 @@ function cgui:init()
 	self.move_gui:addChild(self.mvstickkey)
 	
 	self.move_id = 0
-	
-	--[[self.trright = Sprite.new()
-	self.trright:setAlpha(0)--guialpha)
-	self.trright:setScale(guiscale)
-	self.trright.sprite = Bitmap.new(Texture.new("Sprite/GUI/tr_right.png"))
-	self.trright:addSprite(self.trright.sprite)
-	self.move_gui:addChild(self.trright)
-	
-	self.trleft = Sprite.new()
-	self.trleft:setAlpha(0)--guialpha)
-	self.trleft:setScale(guiscale)
-	self.trleft.sprite = Bitmap.new(Texture.new("Sprite/GUI/tr_left.png"))
-	self.trleft:addSprite(self.trleft.sprite)
-	self.move_gui:addChild(self.trleft)]]--
 	
 	self.trstickarrow = Sprite.new()
 	self.trstickarrow:setAlpha(0)
@@ -157,22 +83,6 @@ function cgui:init()
 	self.trstick_tap = false
 	
 	self.reloading = false
-	
-	--[[self.fire = Sprite.new()
-	self.fire:setAlpha(0)--guialpha)
-	self.fire:setScale(guiscale)
-	self.fire.sprite = Bitmap.new(Texture.new("Sprite/GUI/fire.png"))
-	self.fire:addSprite(self.fire.sprite)
-	self.move_gui:addChild(self.fire)
-	
-	self.fire_id = 0
-	
-	self.reload = Sprite.new()
-	self.reload:setAlpha(guialpha)
-	self.reload:setScale(guiscale)
-	self.reload.sprite = Bitmap.new(Texture.new("Sprite/GUI/reload_button.png"))
-	self.reload:addSprite(self.reload.sprite)
-	self.move_gui:addChild(self.reload)]]--
 	
 	self.wave = Sprite.new()
 	self.wave:setScale(guiscale)
@@ -228,6 +138,38 @@ function cgui:init()
 	self.start_button:addSprite(self.start_button.sprite)
 	self.start_button:addText(self.start_button.text)
 	self.main_gui:addChild(self.start_button)
+	
+	self.startguidetext = Sprite.new()
+	self.startguidetext:setScale(guiscale)
+	self.startguidetext.lefttext = Sprite.new()
+	self.startguidetext.righttext = Sprite.new()
+	self.startguidetext.lefttext.text1 = TextField.new(nil, "Drag left screen")
+	self.startguidetext.lefttext.text2 = TextField.new(nil, "to move the tank")
+	self.startguidetext.righttext.text1 = TextField.new(nil, "Drag right screen")
+	self.startguidetext.righttext.text2 = TextField.new(nil, "to rotate the turret")
+	self.startguidetext.righttext.text3 = TextField.new(nil, "Tap right screen")
+	self.startguidetext.righttext.text4 = TextField.new(nil, "to fire and reload")
+	self.startguidetext.lefttext.text1:setScale(3/4)
+	self.startguidetext.lefttext.text2:setScale(3/4)
+	self.startguidetext.righttext.text1:setScale(3/4)
+	self.startguidetext.righttext.text2:setScale(3/4)
+	self.startguidetext.righttext.text3:setScale(3/4)
+	self.startguidetext.righttext.text4:setScale(3/4)
+	self.startguidetext.lefttext:addText(self.startguidetext.lefttext.text1)
+	self.startguidetext.lefttext:addText(self.startguidetext.lefttext.text2)
+	self.startguidetext.lefttext.text2:setY(self.startguidetext.lefttext.text2:getY() + self.startguidetext.lefttext.text2:getHeight() + 3)
+	self.startguidetext.righttext:addText(self.startguidetext.righttext.text1)
+	self.startguidetext.righttext:addText(self.startguidetext.righttext.text2)
+	self.startguidetext.righttext:addText(self.startguidetext.righttext.text3)
+	self.startguidetext.righttext:addText(self.startguidetext.righttext.text4)
+	self.startguidetext.righttext.text2:setY(self.startguidetext.righttext.text1:getY() + self.startguidetext.righttext.text2:getHeight() + 3)
+	self.startguidetext.righttext.text3:setY(self.startguidetext.righttext.text2:getY() + self.startguidetext.righttext.text3:getHeight() + 3)
+	self.startguidetext.righttext.text4:setY(self.startguidetext.righttext.text3:getY() + self.startguidetext.righttext.text4:getHeight() + 3)
+	self.startguidetext:addChild(self.startguidetext.lefttext)
+	self.startguidetext:addChild(self.startguidetext.righttext)
+	self.startguidetext.lefttext:setX(-(self.startguidetext.lefttext:getWidth()/2 + 10))
+	self.startguidetext.righttext:setX((self.startguidetext.righttext:getWidth()/2))
+	self.guide_gui:addChild(self.startguidetext)
 	
 	self.gameover = Sprite.new()
 	self.gameover:setScale(guiscale)
@@ -305,7 +247,9 @@ function cgui:init()
 	self.rtn.tr = 0
 	self.rtn.fireb = false
 	
-	self.trdesang = 0
+	self.defguideguitimer = 300
+	self.guideguitimer = self.defguideguitimer
+	self.guidetexting = false
 	
 	self.tank = tiger
 	
@@ -322,30 +266,14 @@ end
 
 function cgui:guisetposition()
 	
-	--[[self.down:setPosition(margin + self.left:getWidth() + (self.down:getWidth()/2), device_height - margin - (self.down:getHeight()/2))
-	self.left:setPosition(margin + (self.left:getWidth()/2), device_height - margin - self.down:getHeight() - (self.left:getHeight()/2))
-	self.up:setPosition(self.down:getX(), device_height - margin - self.down:getHeight() - self.left:getHeight() - (self.up:getHeight()/2))
-	self.right:setPosition(margin + self.left:getWidth() + self.down:getWidth() + (self.right:getWidth()/2), self.left:getY())
-	
-	self.upleft:setPosition(self.left:getX(), self.up:getY())
-	self.upright:setPosition(self.right:getX(), self.up:getY())
-	self.downleft:setPosition(self.left:getX(), self.down:getY())
-	self.downright:setPosition(self.right:getX(), self.down:getY())]]--
-	
 	self.mvstickbase:setPosition(margin + (self.mvstickarrow:getWidth()/2), device_height - margin - (self.mvstickarrow:getHeight()/2))
 	self.mvstickarrow:setPosition(self.mvstickbase:getX(), self.mvstickbase:getY())
 	self.mvstickkey:setPosition(self.mvstickbase:getX(), self.mvstickbase:getY())
 	
-	--[[self.trright:setPosition(device_width - margin - (self.trright:getWidth()/2), device_height - margin - (self.trright:getHeight()))
-	self.trleft:setPosition(device_width - margin - self.trright:getWidth() - margin - (self.trleft:getWidth()/2), self.trright:getY())
-	]]--
 	self.trstickbase:setPosition(device_width - margin - (self.trstickarrow:getWidth()/2), device_height - margin - (self.trstickarrow:getHeight()/2))
 	self.trstickarrow:setPosition(self.trstickbase:getX(), self.trstickbase:getY())
 	self.trstickkey:setPosition(self.trstickbase:getX(), self.trstickbase:getY())
 	
-	--[[self.fire:setPosition(device_width - margin - self.right:getWidth() - (margin/2), self.trright:getY() - (self.trright:getHeight()/2) - (self.fire:getHeight()/2))
-	self.reload:setPosition(device_width - margin - (self.reload:getWidth()/2), self.fire:getY() - (margin*2) - (self.reload:getHeight()/2))
-	]]--
 	self.wave:setPosition((margin/10) + self.wave:getWidth(), (margin/10) + self.wave:getHeight())
 	self.leftenemy:setPosition(self.wave:getX(), self.wave:getY() + (self.wave:getHeight()/2) + (margin/2))
 	self.pause_button:setPosition(device_width / 2, (margin) + (self.pause_button:getHeight()/6))
@@ -365,6 +293,7 @@ function cgui:guisetposition()
 	
 	self.settingbutton:setPosition(margin + (self.settingbutton:getWidth()/2), device_height - margin - (self.settingbutton:getHeight()/2))
 	
+	self.startguidetext:setPosition(device_width/2, device_height/2)
 end
 
 function cgui:touches_begin(event)
@@ -382,7 +311,10 @@ function cgui:touches_begin(event)
 			self.game_gui:setAlpha(1)
 			self.move_gui:setAlpha(1)
 			self.main_gui:setAlpha(0)
+			self.guide_gui:setAlpha(1)
 			aim:setAlpha(0.5)
+			self.guideguitimer = self.defguideguitimer
+			self.guidetexting = true
 			return
 		elseif self.settingbutton:hitTestPoint(event.touch.x, event.touch.y) then
 			csetting.new()
@@ -420,64 +352,6 @@ function cgui:touches_begin(event)
 	end
 	
 	if self.move_gui:getAlpha() ~= 0 and not game_pause and not game_ended then
-		--[[if self.up:hitTestPoint(event.touch.x, event.touch.y) then
-			self.rtn.left = 1
-			self.rtn.right = 1
-			self.move_id = event.touch.id
-			self.up:setAlpha(1)
-		elseif self.down:hitTestPoint(event.touch.x, event.touch.y) then
-			self.rtn.left = -1
-			self.rtn.right = -1
-			self.move_id = event.touch.id
-			self.down:setAlpha(1)
-		elseif self.right:hitTestPoint(event.touch.x, event.touch.y) then
-			self.rtn.left = 1
-			self.rtn.right = -1
-			self.move_id = event.touch.id
-			self.right:setAlpha(1)
-		elseif self.left:hitTestPoint(event.touch.x, event.touch.y) then
-			self.rtn.left = -1
-			self.rtn.right = 1
-			self.move_id = event.touch.id
-			self.left:setAlpha(1)
-		elseif self.upleft:hitTestPoint(event.touch.x, event.touch.y) then
-			self.rtn.left = 0.5
-			self.rtn.right = 1
-			self.move_id = event.touch.id
-			self.upleft:setAlpha(1)
-		elseif self.upright:hitTestPoint(event.touch.x, event.touch.y) then
-			self.rtn.left = 1
-			self.rtn.right = 0.5
-			self.move_id = event.touch.id
-			self.upright:setAlpha(1)
-		elseif self.downleft:hitTestPoint(event.touch.x, event.touch.y) then
-			self.rtn.left = -0.5
-			self.rtn.right = -1
-			self.move_id = event.touch.id
-			self.downleft:setAlpha(1)
-		elseif self.downright:hitTestPoint(event.touch.x, event.touch.y) then
-			self.rtn.left = -1
-			self.rtn.right = -0.5
-			self.move_id = event.touch.id
-			self.downright:setAlpha(1)
-		elseif self.trleft:hitTestPoint(event.touch.x, event.touch.y) then
-			self.rtn.tr = 1
-			self.turret_id = event.touch.id
-			self.trleft:setAlpha(1)
-		elseif self.trright:hitTestPoint(event.touch.x, event.touch.y) then
-			self.rtn.tr = -1
-			self.turret_id = event.touch.id
-			self.trright:setAlpha(1)
-		elseif self.fire:hitTestPoint(event.touch.x, event.touch.y) then
-			self.rtn.fireb = true
-			self.fire_id = event.touch.id
-			self.fire:setAlpha(1)
-		elseif self.reload:hitTestPoint(event.touch.x, event.touch.y) then
-			if self.reload:getAlpha()~=0 then
-				reload_tap()
-			end
-		end]]--
-		
 		if event.touch.x < device_width/2 then
 			self.mvstickarrow:setAlpha(guialpha)
 			self.mvstickbase:setAlpha(guialpha)
@@ -506,61 +380,6 @@ end
 function cgui:touches_move(event)
 	
 	if self.move_gui:getAlpha() ~= 0 and not game_pause and not game_ended then
-		--[[if event.touch.id == self.move_id then
-			self.up:setAlpha(guialpha)
-			self.down:setAlpha(guialpha)
-			self.left:setAlpha(guialpha)
-			self.right:setAlpha(guialpha)
-			self.upleft:setAlpha(guialpha)
-			self.upright:setAlpha(guialpha)
-			self.downleft:setAlpha(guialpha)
-			self.downright:setAlpha(guialpha)
-			if self.up:hitTestPoint(event.touch.x, event.touch.y) then
-				self.rtn.left = 1
-				self.rtn.right = 1
-				self.move_id = event.touch.id
-				self.up:setAlpha(1)
-			elseif self.down:hitTestPoint(event.touch.x, event.touch.y) then
-				self.rtn.left = -1
-				self.rtn.right = -1
-				self.move_id = event.touch.id
-				self.down:setAlpha(1)
-			elseif self.right:hitTestPoint(event.touch.x, event.touch.y) then
-				self.rtn.left = 1
-				self.rtn.right = -1
-				self.move_id = event.touch.id
-				self.right:setAlpha(1)
-			elseif self.left:hitTestPoint(event.touch.x, event.touch.y) then
-				self.rtn.left = -1
-				self.rtn.right = 1
-				self.move_id = event.touch.id
-				self.left:setAlpha(1)
-			elseif self.upleft:hitTestPoint(event.touch.x, event.touch.y) then
-				self.rtn.left = 0.5
-				self.rtn.right = 1
-				self.move_id = event.touch.id
-				self.upleft:setAlpha(1)
-			elseif self.upright:hitTestPoint(event.touch.x, event.touch.y) then
-				self.rtn.left = 1
-				self.rtn.right = 0.5
-				self.move_id = event.touch.id
-				self.upright:setAlpha(1)
-			elseif self.downleft:hitTestPoint(event.touch.x, event.touch.y) then
-				self.rtn.left = -0.5
-				self.rtn.right = -1
-				self.move_id = event.touch.id
-				self.downleft:setAlpha(1)
-			elseif self.downright:hitTestPoint(event.touch.x, event.touch.y) then
-				self.rtn.left = -1
-				self.rtn.right = -0.5
-				self.move_id = event.touch.id
-				self.downright:setAlpha(1)
-			else
-				self.rtn.left = 0
-				self.rtn.right = 0
-			end
-		end]]--
-		
 		if event.touch.id == self.move_id then
 			if getdistance(event.touch.x, event.touch.y, self.mvstickbase:getPosition()) <= self.mvstickbase:getWidth()/2 then
 				self.mvstickkey:setPosition(event.touch.x, event.touch.y)
@@ -581,22 +400,6 @@ function cgui:touches_move(event)
 				self.trstick_mxdist = getdistance(event.touch.x, event.touch.y, self.trstickbase:getPosition())
 			end
 		end
-		
-		--[[if event.touch.id == self.turret_id then
-			self.trleft:setAlpha(guialpha)
-			self.trright:setAlpha(guialpha)
-			if self.trleft:hitTestPoint(event.touch.x, event.touch.y) then
-				self.rtn.tr = 1
-				self.turret_id = event.touch.id
-				self.trleft:setAlpha(1)
-			elseif self.trright:hitTestPoint(event.touch.x, event.touch.y) then
-				self.rtn.tr = -1
-				self.turret_id = event.touch.id
-				self.trright:setAlpha(1)
-			else
-				self.rtn.tr = 0
-			end
-		end]]--
 	end
 	
 end
@@ -607,14 +410,6 @@ function cgui:touches_end(event)
 		self.rtn.left = 0
 		self.rtn.right = 0
 		self.move_id = 0
-		--[[self.up:setAlpha(guialpha)
-		self.down:setAlpha(guialpha)
-		self.left:setAlpha(guialpha)
-		self.right:setAlpha(guialpha)
-		self.upleft:setAlpha(guialpha)
-		self.upright:setAlpha(guialpha)
-		self.downleft:setAlpha(guialpha)
-		self.downright:setAlpha(guialpha)]]--
 		self.mvstickkey:setPosition(self.mvstickbase:getX(), self.mvstickbase:getY())
 		self.mvstickarrow:setAlpha(0)
 		self.mvstickbase:setAlpha(0)
@@ -623,13 +418,11 @@ function cgui:touches_end(event)
 	if event.touch.id == self.turret_id then
 		self.rtn.tr = 0
 		self.turret_id = 0
-		--[[self.trleft:setAlpha(guialpha)
-		self.trright:setAlpha(guialpha)]]--
 		self.trstickkey:setPosition(self.trstickbase:getX(), self.trstickbase:getY())
 		self.trstickarrow:setAlpha(0)
 		self.trstickbase:setAlpha(0)
 		self.trstickkey:setAlpha(0)
-		if self.trstick_mxdist < self.trstickbase:getWidth()/50 then
+		if self.trstick_mxdist < self.trstickbase:getWidth()/30 then
 			self.trstick_tap = true
 		end
 		self.trstick_start = false
@@ -637,7 +430,6 @@ function cgui:touches_end(event)
 	if event.touch.id == self.fire_id then
 		self.rtn.fireb = false
 		self.fire_id = 0
-		--self.fire:setAlpha(guialpha)
 	end
 	
 end
@@ -690,7 +482,6 @@ function cgui:rtnv()
 	local trang = math.deg(math.atan2(self.trstickkey:getX() - self.trstickbase:getX(), self.trstickbase:getY() - self.trstickkey:getY())) %360
 	local mvfactor = math.abs(getdistance(self.mvstickkey:getX(), self.mvstickkey:getY(), self.mvstickbase:getX(), self.mvstickbase:getY()) / (self.mvstickbase:getWidth()/2))
 	local tnmvang = (2-math.abs(math.tan(math.rad(mvang))))/2
-	--local trfactor = (self.trstickkey:getX() - self.trstickbase:getX()) / (self.trstickbase:getWidth()/2)
 	local trfactor = math.abs(getdistance(self.trstickkey:getX(), self.trstickkey:getY(), self.trstickbase:getX(), self.trstickbase:getY()) / (self.trstickbase:getWidth()/2))
 	local mtang = math.deg(self.tank:getRotation())%360
 	local ttang = math.deg(self.tank.turret:getAngle())%360
@@ -698,26 +489,6 @@ function cgui:rtnv()
 	self.rtn.right = 0
 	self.rtn.tr = 0
 	self.rtn.fireb = false
-	
-	--[[if mvang>=60 and mvang<=120 then
-		self.rtn.left = mvfactor
-		self.rtn.right = -mvfactor
-	elseif mvang>=240 and mvang<=300 then
-		self.rtn.left = -mvfactor
-		self.rtn.right = mvfactor
-	elseif mvang>=0 and mvang<=90 then
-		self.rtn.left = mvfactor
-		self.rtn.right = tnmvang * mvfactor
-	elseif mvang>=90 and mvang<=180 then
-		self.rtn.left = -mvfactor
-		self.rtn.right = -tnmvang * mvfactor
-	elseif mvang>=180 and mvang<=270 then
-		self.rtn.right = -mvfactor
-		self.rtn.left = -tnmvang * mvfactor
-	elseif mvang>=270 and mvang<=360 then
-		self.rtn.right = mvfactor
-		self.rtn.left = tnmvang * mvfactor
-	end]]--
 	
 	if mvfactor ~= 0 then
 		local mvtdiff = 0 - mtang
@@ -792,22 +563,6 @@ function cgui:rtnv()
 		end
 	end
 	
-	--[[if trfactor ~= 0 then
-		local trdiff = 0 - ttang
-		local trdesangle = trang + trdiff
-		if trdesangle < 0 then
-			trdesangle = trdesangle + 360
-		end
-		if math.abs(trang - ttang) > 2 then
-			if trdesangle > 180 then
-				self.rtn.tr = trfactor
-			else
-				self.rtn.tr = -trfactor
-			end
-			self.trdesang = trang
-		end
-	end]]--
-	
 	local rtrfactor = math.cos(math.rad(trang - ttang - 90)) * trfactor
 	self.trstickarrow:setRotation(ttang)
 	self.rtn.tr = -rtrfactor
@@ -819,6 +574,16 @@ function cgui:rtnv()
 		else
 			self.rtn.fireb = true
 			self.trstick_tap = false
+		end
+	end
+	
+	if self.guidetexting then
+		self.guideguitimer = self.guideguitimer - 1
+		if self.guideguitimer <= 0 then
+			self.guide_gui:setAlpha(self.guide_gui:getAlpha() - 0.03)
+			if self.guide_gui:getAlpha() <= 0 then
+				self.guidetexting = false
+			end
 		end
 	end
 	

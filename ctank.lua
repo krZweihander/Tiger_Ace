@@ -230,6 +230,11 @@ function ctank:init(world, sort, x, y, _isPlayer)
 		self.rtn.tr = 0
 		self.rtn.fireb = false
 		
+		self.defaicount = 5
+		self.aicount = self.defaicount
+		self.defapplyingtimer = 10
+		self.applyingtimer = self.defapplyingtimer
+		
 		--[[self.accel = {}
 		self.accel.left = false
 		self.accel.right = false
