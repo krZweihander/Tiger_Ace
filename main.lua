@@ -195,12 +195,14 @@ function load_setting()
 	
 	set_guiscale = dataSaver.loadValue("guiscale") or 1
 	set_guialpha = dataSaver.loadValue("guialpha") or 0.5
+	set_floatingstick = dataSaver.loadValue("floatingstick") or true
 	--set_guiscale = 1
 	--set_guialpha = 0.5
 	
 	guiscale = default_guiscale * set_guiscale
 	guialpha = set_guialpha
 	margin = 5 * guiscale
+	floatingstick = set_floatingstick
 end
 
 actors = {}
@@ -245,6 +247,7 @@ function main()
 	
 	
 	gui = cgui.new()
+	settingpage = csetting.new()
 	aim = caim.new(tiger)
 	
 	wave = cwave.new(tiger, s_t3485, tworld.world)

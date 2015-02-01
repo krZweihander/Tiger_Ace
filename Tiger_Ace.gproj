@@ -1,5 +1,5 @@
 <project>
- <properties architecture="1" encryptCode="0" scaleMode="0" logicalHeight="480" mouseToTouch="1" packageName="lee.thomas.tiger_ace" retinaDisplay="0" touchToMouse="1" mouseTouchOrder="0" assetsOnly="1" orientation="1" iosDevice="0" fps="60" logicalWidth="320" autorotation="0" encryptAssets="0">
+ <properties logicalHeight="480" encryptCode="0" mouseToTouch="1" assetsOnly="1" packageName="lee.thomas.tiger_ace" fps="60" retinaDisplay="0" touchToMouse="1" scaleMode="0" mouseTouchOrder="0" orientation="1" logicalWidth="320" encryptAssets="0" autorotation="0" iosDevice="0" architecture="1">
   <imageScales/>
  </properties>
  <folder name="Sound">
@@ -121,25 +121,21 @@
    <file source="Sprite/BG/background_99.png"/>
   </folder>
   <folder name="GUI">
+   <file source="Sprite/GUI/checkbutton_check.png"/>
+   <file source="Sprite/GUI/checkbutton_base.png"/>
    <file downsizing="1" source="Sprite/GUI/aim.png"/>
    <file downsizing="1" source="Sprite/GUI/aiming_line.png"/>
    <file downsizing="1" source="Sprite/GUI/alert.png"/>
-   <file downsizing="1" source="Sprite/GUI/down.png"/>
-   <file downsizing="1" source="Sprite/GUI/fire.png"/>
-   <file downsizing="1" source="Sprite/GUI/left.png"/>
+   <file source="Sprite/GUI/minusbutton.png"/>
    <file downsizing="1" source="Sprite/GUI/pause.png"/>
+   <file source="Sprite/GUI/plusbutton.png"/>
    <file downsizing="1" source="Sprite/GUI/reload.png"/>
-   <file downsizing="1" source="Sprite/GUI/reload_button.png"/>
    <file downsizing="1" source="Sprite/GUI/reloader.png"/>
-   <file downsizing="1" source="Sprite/GUI/right.png"/>
    <file downsizing="1" source="Sprite/GUI/setting.png"/>
    <file source="Sprite/GUI/stick_base-arrow.png"/>
    <file source="Sprite/GUI/stick_base-arrow_turret.png"/>
    <file source="Sprite/GUI/stick_base.png"/>
    <file source="Sprite/GUI/stick_key.png"/>
-   <file downsizing="1" source="Sprite/GUI/tr_left.png"/>
-   <file downsizing="1" source="Sprite/GUI/tr_right.png"/>
-   <file downsizing="1" source="Sprite/GUI/up.png"/>
   </folder>
   <folder name="Item">
    <file downsizing="1" source="Sprite/Item/repairpack.png"/>
