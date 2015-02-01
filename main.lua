@@ -35,9 +35,6 @@ stage:addChild(debug_text)]]--
 
 s_tiger = {}
 s_tiger.sprite = {}
---s_tiger.sprite.turret = "Sprite/Tank/tiger_turret.png"
---s_tiger.sprite.hull = "Sprite/Tank/tiger_hull.png"
---s_tiger.sprite.cannon = "Sprite/Tank/tiger_cannon.png"
 s_tiger.sprite.turret = "Sprite/Tank/Tiger/turret.png"
 s_tiger.sprite.hull = "Sprite/Tank/Tiger/hull.png"
 s_tiger.sprite.cannon = "Sprite/Tank/Tiger/cannon.png"
@@ -76,9 +73,6 @@ s_tiger.deadtimer = 300
 
 s_t3485 = {}
 s_t3485.sprite = {}
---s_t3485.sprite.turret = "Sprite/Tank/tiger_turret.png"
---s_t3485.sprite.hull = "Sprite/Tank/tiger_hull.png"
---s_t3485.sprite.cannon = "Sprite/Tank/tiger_cannon.png"
 s_t3485.sprite.turret = "Sprite/Tank/T3485/turret.png"
 s_t3485.sprite.hull = "Sprite/Tank/T3485/hull.png"
 s_t3485.sprite.cannon = "Sprite/Tank/T3485/cannon.png"
