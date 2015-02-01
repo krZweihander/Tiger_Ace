@@ -497,7 +497,9 @@ function cgui:rtnv()
 			mvdesangle = mvdesangle + 360
 		end
 		if mvdesangle%360 >= 240 or mvdesangle%360 <= 120 then
-			if math.abs(mvang - mtang) > 45 then
+			print(mvdesangle%360)
+			--if math.abs(mvang - mtang) > 45 then
+			if mvdesangle%360 > 45 and mvdesangle%360 < 315 then
 				if mvdesangle > 180 then
 					self.rtn.left = -mvfactor
 					self.rtn.right = mvfactor
@@ -505,7 +507,7 @@ function cgui:rtnv()
 					self.rtn.left = mvfactor
 					self.rtn.right = -mvfactor
 				end
-			elseif math.abs(mvang - mtang) > 30 then
+			elseif mvdesangle%360 > 30 and mvdesangle%360 < 330 then
 				if mvdesangle > 180 then
 					self.rtn.left = 0
 					self.rtn.right = mvfactor
@@ -513,7 +515,7 @@ function cgui:rtnv()
 					self.rtn.left = mvfactor
 					self.rtn.right = 0
 				end
-			elseif math.abs(mvang - mtang) > 15 then
+			elseif mvdesangle%360 > 15 and mvdesangle%360 < 345 then
 				if mvdesangle > 180 then
 					self.rtn.left = mvfactor/2
 					self.rtn.right = mvfactor
@@ -532,7 +534,8 @@ function cgui:rtnv()
 			if mvdesangle < 0 then
 				mvdesangle = mvdesangle + 360
 			end
-			if math.abs(mvang - mtang) > 45 then
+			--if math.abs(mvang - mtang) > 45 then
+			if mvdesangle%360 > 45 and mvdesangle%360 < 315 then
 				if mvdesangle > 180 then
 					self.rtn.left = -mvfactor
 					self.rtn.right = mvfactor
@@ -540,7 +543,7 @@ function cgui:rtnv()
 					self.rtn.left = mvfactor
 					self.rtn.right = -mvfactor
 				end
-			elseif math.abs(mvang - mtang) > 30 then
+			elseif mvdesangle%360 > 30 and mvdesangle%360 < 330 then
 				if mvdesangle > 180 then
 					self.rtn.left = -mvfactor
 					self.rtn.right = -mvfactor/2
@@ -548,7 +551,7 @@ function cgui:rtnv()
 					self.rtn.left = -mvfactor/2
 					self.rtn.right = -mvfactor
 				end
-			elseif math.abs(mvang - mtang) > 15 then
+			elseif mvdesangle%360 > 15 and mvdesangle%360 < 345 then
 				if mvdesangle > 180 then
 					self.rtn.left = -mvfactor
 					self.rtn.right = 0

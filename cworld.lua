@@ -2,7 +2,7 @@
 cworld = Core.class(Sprite)
 
 function cworld:init()
-	self.world = b2.World.new(0, 0)
+	self.world = b2.World.new(0, 0, true)
 	
 	self.background = Sprite.new()
 	--self.background:setScale(scale)
