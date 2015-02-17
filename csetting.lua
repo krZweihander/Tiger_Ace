@@ -8,7 +8,9 @@ function csetting:init()
 	self.set = {}
 	self.set.guiscale = set_guiscale * 10
 	self.set.guialpha = set_guialpha * 10
-	self.set.floatingstick = set_floatingstick
+	self.set.movefloatingstick = set_movefloatingstick
+	self.set.turretfloatingstick = set_turretfloatingstick
+	self.set.controlmethod = set_controlmethod
 	
 	self.lblscale = Sprite.new()
 	self.lblscale:setScale(guiscale)
@@ -73,21 +75,79 @@ function csetting:init()
 	self.lblfloatingstick:addText(self.lblfloatingstick.sprite)
 	self:addChild(self.lblfloatingstick)
 	
-	self.floatingstickcheckbutton = Sprite.new()
-	self.floatingstickcheckbutton:setScale(guiscale)
-	self.floatingstickcheckbutton.sprite_base = Bitmap.new(Texture.new("Sprite/GUI/checkbutton_base.png"))
-	self.floatingstickcheckbutton.sprite_check = Bitmap.new(Texture.new("Sprite/GUI/checkbutton_check.png"))
-	self.floatingstickcheckbutton.sprite_base:setScale(1/10)
-	self.floatingstickcheckbutton.sprite_check:setScale(1/10)
-	self.floatingstickcheckbutton:addSprite(self.floatingstickcheckbutton.sprite_base)
-	self.floatingstickcheckbutton:addSprite(self.floatingstickcheckbutton.sprite_check)
-	self:addChild(self.floatingstickcheckbutton)
+	self.lblmove = Sprite.new()
+	self.lblmove:setScale(guiscale)
+	self.lblmove.sprite = TextField.new(nil, "Move")
+	self.lblmove.sprite:setScale(2/3)
+	self.lblmove:addText(self.lblmove.sprite)
+	self:addChild(self.lblmove)
 	
-	if self.set.floatingstick then
-		self.floatingstickcheckbutton.sprite_check:setAlpha(1)
+	self.lblturret = Sprite.new()
+	self.lblturret:setScale(guiscale)
+	self.lblturret.sprite = TextField.new(nil, "Turret")
+	self.lblturret.sprite:setScale(2/3)
+	self.lblturret:addText(self.lblturret.sprite)
+	self:addChild(self.lblturret)
+	
+	self.movefloatingstickcheckbutton = Sprite.new()
+	self.movefloatingstickcheckbutton:setScale(guiscale)
+	self.movefloatingstickcheckbutton.sprite_base = Bitmap.new(Texture.new("Sprite/GUI/checkbutton_base.png"))
+	self.movefloatingstickcheckbutton.sprite_check = Bitmap.new(Texture.new("Sprite/GUI/checkbutton_check.png"))
+	self.movefloatingstickcheckbutton.sprite_base:setScale(1/10)
+	self.movefloatingstickcheckbutton.sprite_check:setScale(1/10)
+	self.movefloatingstickcheckbutton:addSprite(self.movefloatingstickcheckbutton.sprite_base)
+	self.movefloatingstickcheckbutton:addSprite(self.movefloatingstickcheckbutton.sprite_check)
+	self:addChild(self.movefloatingstickcheckbutton)
+	
+	self.turretfloatingstickcheckbutton = Sprite.new()
+	self.turretfloatingstickcheckbutton:setScale(guiscale)
+	self.turretfloatingstickcheckbutton.sprite_base = Bitmap.new(Texture.new("Sprite/GUI/checkbutton_base.png"))
+	self.turretfloatingstickcheckbutton.sprite_check = Bitmap.new(Texture.new("Sprite/GUI/checkbutton_check.png"))
+	self.turretfloatingstickcheckbutton.sprite_base:setScale(1/10)
+	self.turretfloatingstickcheckbutton.sprite_check:setScale(1/10)
+	self.turretfloatingstickcheckbutton:addSprite(self.turretfloatingstickcheckbutton.sprite_base)
+	self.turretfloatingstickcheckbutton:addSprite(self.turretfloatingstickcheckbutton.sprite_check)
+	self:addChild(self.turretfloatingstickcheckbutton)
+	
+	if self.set.movefloatingstick then
+		self.movefloatingstickcheckbutton.sprite_check:setAlpha(1)
 	else
-		self.floatingstickcheckbutton.sprite_check:setAlpha(0)
+		self.movefloatingstickcheckbutton.sprite_check:setAlpha(0)
 	end
+	
+	if self.set.turretfloatingstick then
+		self.turretfloatingstickcheckbutton.sprite_check:setAlpha(1)
+	else
+		self.turretfloatingstickcheckbutton.sprite_check:setAlpha(0)
+	end
+	
+	self.lblcontrolmethod = Sprite.new()
+	self.lblcontrolmethod:setScale(guiscale)
+	self.lblcontrolmethod.sprite = TextField.new(nil, "Control Method")
+	self.lblcontrolmethod.sprite:setScale(2/3)
+	self.lblcontrolmethod:addText(self.lblcontrolmethod.sprite)
+	self:addChild(self.lblcontrolmethod)
+	
+	self.controlmethodminusbutton = Sprite.new()
+	self.controlmethodminusbutton:setScale(guiscale)
+	self.controlmethodminusbutton.sprite = Bitmap.new(Texture.new("Sprite/GUI/minusbutton.png"))
+	self.controlmethodminusbutton.sprite:setScale(1/10)
+	self.controlmethodminusbutton:addSprite(self.controlmethodminusbutton.sprite)
+	self:addChild(self.controlmethodminusbutton)
+	
+	self.txtcontrolmethod = Sprite.new()
+	self.txtcontrolmethod:setScale(guiscale)
+	self.txtcontrolmethod.sprite = TextField.new(nil, self.set.controlmethod)
+	self.txtcontrolmethod.sprite:setScale(1)
+	self.txtcontrolmethod:addText(self.txtcontrolmethod.sprite)
+	self:addChild(self.txtcontrolmethod)
+	
+	self.controlmethodplusbutton = Sprite.new()
+	self.controlmethodplusbutton:setScale(guiscale)
+	self.controlmethodplusbutton.sprite = Bitmap.new(Texture.new("Sprite/GUI/plusbutton.png"))
+	self.controlmethodplusbutton.sprite:setScale(1/10)
+	self.controlmethodplusbutton:addSprite(self.controlmethodplusbutton.sprite)
+	self:addChild(self.controlmethodplusbutton)
 	
 	self.confirmbutton = Sprite.new()
 	self.confirmbutton:setScale(guiscale)
@@ -99,7 +159,7 @@ function csetting:init()
 	self.confirmbutton:addText(self.confirmbutton.text)
 	self:addChild(self.confirmbutton)
 	
-	self.txtscale:setPosition(device_width*2/3, margin + margin + self.txtscale:getHeight()/2)
+	self.txtscale:setPosition(device_width*2/3, margin + self.txtscale:getHeight()/2)
 	self.scaleminusbutton:setPosition(self.txtscale:getX() - margin - margin - self.scaleminusbutton:getWidth()/2, self.txtscale:getY())
 	self.scaleplusbutton:setPosition(self.txtscale:getX() + margin + margin + self.scaleplusbutton:getWidth()/2, self.txtscale:getY())
 	self.lblscale:setPosition(self.scaleminusbutton:getX() - self.scaleminusbutton:getWidth()/2 - margin - self.lblscale:getWidth()/2, self.txtscale:getY())
@@ -109,10 +169,18 @@ function csetting:init()
 	self.alphaplusbutton:setPosition(self.txtalpha:getX() + margin + margin + self.alphaplusbutton:getWidth()/2, self.txtalpha:getY())
 	self.lblalpha:setPosition(self.alphaminusbutton:getX() - self.alphaminusbutton:getWidth()/2 - margin - self.lblalpha:getWidth()/2, self.txtalpha:getY())
 	
-	self.floatingstickcheckbutton:setPosition(device_width*2/3, self.txtalpha:getY() + self.txtalpha:getHeight()/2 + margin + margin + self.floatingstickcheckbutton:getHeight()/2)
-	self.lblfloatingstick:setPosition(self.floatingstickcheckbutton:getX() - self.floatingstickcheckbutton:getWidth()/2 - margin - margin - self.lblfloatingstick:getWidth()/2, self.floatingstickcheckbutton:getY())
+	self.txtcontrolmethod:setPosition(device_width*2/3, self.txtalpha:getY() + self.txtalpha:getHeight()/2 + margin + margin + self.lblcontrolmethod:getHeight()/2)
+	self.controlmethodminusbutton:setPosition(self.txtcontrolmethod:getX() - margin - margin - self.controlmethodminusbutton:getWidth()/2, self.txtcontrolmethod:getY())
+	self.controlmethodplusbutton:setPosition(self.txtcontrolmethod:getX() + margin + margin + self.controlmethodplusbutton:getWidth()/2, self.txtcontrolmethod:getY())
+	self.lblcontrolmethod:setPosition(self.controlmethodminusbutton:getX() - self.controlmethodminusbutton:getWidth()/2 - margin - self.lblcontrolmethod:getWidth()/2, self.txtcontrolmethod:getY())
 	
-	self.confirmbutton:setPosition(device_width/2, self.floatingstickcheckbutton:getY() + self.floatingstickcheckbutton:getHeight()/2 + margin + self.confirmbutton:getHeight())
+	self.lblmove:setPosition(self.controlmethodminusbutton:getX() + margin/2, self.txtcontrolmethod:getY() + self.txtcontrolmethod:getHeight()/2 + margin/2 + margin + self.lblmove:getHeight()/2)
+	self.lblturret:setPosition(self.controlmethodplusbutton:getX() - margin/2, self.txtcontrolmethod:getY() + self.txtcontrolmethod:getHeight()/2 + margin/2 + margin + self.lblturret:getHeight()/2)
+	self.movefloatingstickcheckbutton:setPosition(self.lblmove:getX(), self.lblmove:getY() + self.lblmove:getHeight()/2 + margin/3 + self.movefloatingstickcheckbutton:getHeight()/2)
+	self.turretfloatingstickcheckbutton:setPosition(self.lblturret:getX(), self.lblturret:getY() + self.lblturret:getHeight()/2 + margin/3 + self.turretfloatingstickcheckbutton:getHeight()/2)
+	self.lblfloatingstick:setPosition(self.movefloatingstickcheckbutton:getX() - self.movefloatingstickcheckbutton:getWidth()/2 - margin - margin - self.lblfloatingstick:getWidth()/2, self.movefloatingstickcheckbutton:getY() - margin/3)
+	
+	self.confirmbutton:setPosition(device_width/2, self.movefloatingstickcheckbutton:getY() + self.movefloatingstickcheckbutton:getHeight()/2 + self.confirmbutton:getHeight())
 	
 	--[[self.selectdlg = AlertDialog.new("Setting", "Select a setting to change\nSize : Size of the interface\nAlpha : Transparency of the interface", "Cancel", "Size", "Alpha")
 	
@@ -155,8 +223,14 @@ function csetting:touches_begin(event)
 		self.set.guialpha = self.set.guialpha - 1
 	elseif self.alphaplusbutton:hitTestPoint(event.touch.x, event.touch.y) then
 		self.set.guialpha = self.set.guialpha + 1
-	elseif self.floatingstickcheckbutton:hitTestPoint(event.touch.x, event.touch.y) then
-		self.set.floatingstick = not self.set.floatingstick
+	elseif self.controlmethodminusbutton:hitTestPoint(event.touch.x, event.touch.y) then
+		self.set.controlmethod = self.set.controlmethod - 1
+	elseif self.controlmethodplusbutton:hitTestPoint(event.touch.x, event.touch.y) then
+		self.set.controlmethod = self.set.controlmethod + 1
+	elseif self.movefloatingstickcheckbutton:hitTestPoint(event.touch.x, event.touch.y) then
+		self.set.movefloatingstick = not self.set.movefloatingstick
+	elseif self.turretfloatingstickcheckbutton:hitTestPoint(event.touch.x, event.touch.y) then
+		self.set.turretfloatingstick = not self.set.turretfloatingstick
 	elseif self.confirmbutton:hitTestPoint(event.touch.x, event.touch.y) then
 		self.confirm_id = event.id
 	end
@@ -171,13 +245,25 @@ function csetting:touches_begin(event)
 	elseif self.set.guialpha < 1 then
 		self.set.guialpha = 1
 	end
+	if self.set.controlmethod > 2 then
+		self.set.controlmethod = 2
+	elseif self.set.controlmethod < 1 then
+		self.set.controlmethod = 1
+	end
 	
 	self.txtscale.sprite:setText(self.set.guiscale)
 	self.txtalpha.sprite:setText(self.set.guialpha)
-	if self.set.floatingstick then
-		self.floatingstickcheckbutton.sprite_check:setAlpha(1)
+	self.txtcontrolmethod.sprite:setText(self.set.controlmethod)
+	if self.set.movefloatingstick then
+		self.movefloatingstickcheckbutton.sprite_check:setAlpha(1)
 	else
-		self.floatingstickcheckbutton.sprite_check:setAlpha(0)
+		self.movefloatingstickcheckbutton.sprite_check:setAlpha(0)
+	end
+	
+	if self.set.turretfloatingstick then
+		self.turretfloatingstickcheckbutton.sprite_check:setAlpha(1)
+	else
+		self.turretfloatingstickcheckbutton.sprite_check:setAlpha(0)
 	end
 	
 end
@@ -218,10 +304,14 @@ function csetting:end_setting()
 	
 	set_guiscale = self.set.guiscale / 10
 	set_guialpha = self.set.guialpha / 10
-	set_floatingstick = self.set.floatingstick
+	set_controlmethod = self.set.controlmethod
+	set_movefloatingstick = self.set.movefloatingstick
+	set_turretfloatingstick = self.set.turretfloatingstick
 	guiscale = default_guiscale * set_guiscale
 	guialpha = set_guialpha
-	floatingstick = set_floatingstick
+	controlmethod = set_controlmethod
+	movefloatingstick = set_movefloatingstick
+	turretfloatingstick = set_turretfloatingstick
 	margin = 5 * guiscale
 	
 	for i = 1, gui.move_gui:getNumChildren() do

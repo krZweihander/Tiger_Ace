@@ -118,12 +118,19 @@ function cgui:init()
 	self.pause_button:addSprite(self.pause_button.sprite2)
 	self.game_gui:addChild(self.pause_button)
 	
+	self.mainscreen = Sprite.new()
+	self.mainscreen:setScale(guiscale)
+	self.mainscreen.sprite = Bitmap.new(Texture.new("Sprite/GUI/mainscreen.png"))
+	self.mainscreen.sprite:setScale(0.16)
+	self.mainscreen:addSprite(self.mainscreen.sprite)
+	self.main_gui:addChild(self.mainscreen)
+	
 	self.title = Sprite.new()
 	self.title:setScale(guiscale)
 	self.title.sprite = TextField.new(nil, "Tiger Ace")
 	self.title.sprite:setScale(5/2)
 	self.title:addText(self.title.sprite)
-	self.main_gui:addChild(self.title)
+	--self.main_gui:addChild(self.title)
 	
 	self.credit = Sprite.new()
 	self.credit:setScale(guiscale)
@@ -134,7 +141,7 @@ function cgui:init()
 	self.credit:addText(self.credit.text1)
 	self.credit:addText(self.credit.text2)
 	self.credit.text2:setY(self.credit.text2:getY() + (self.credit.text1:getHeight()/2) + 5)
-	self.main_gui:addChild(self.credit)
+	--self.main_gui:addChild(self.credit)
 	
 	self.start_button = Sprite.new()
 	self.start_button:setScale(guiscale)
@@ -273,10 +280,12 @@ end
 
 function cgui:guisetposition()
 	
-	if not floatingstick then
+	if not movefloatingstick then
 		self.mvstickarrow:setAlpha(guialpha)
 		self.mvstickbase:setAlpha(guialpha)
 		self.mvstickkey:setAlpha(guialpha)
+	end
+	if not turretfloatingstick then
 		self.trstickarrow:setAlpha(guialpha)
 		self.trstickbase:setAlpha(guialpha)
 		self.trstickkey:setAlpha(guialpha)
@@ -294,6 +303,7 @@ function cgui:guisetposition()
 	self.leftenemy:setPosition(self.wave:getX(), self.wave:getY() + (self.wave:getHeight()/2) + (margin/2))
 	self.pause_button:setPosition(device_width / 2, (margin) + (self.pause_button:getHeight()/6))
 	
+	self.mainscreen:setPosition(device_width/2, device_height/2)
 	self.title:setPosition(device_width/2, margin*3)
 	self.credit:setPosition(device_width/2, self.title:getY() + (self.title:getHeight()/2) + (margin*2))
 	self.start_button:setPosition(device_width/2, device_height - self.mkill:getHeight() - (margin*3))
@@ -372,7 +382,7 @@ function cgui:touches_begin(event)
 	end
 	
 	if self.move_gui:getAlpha() ~= 0 and not game_pause and not game_ended then
-		if floatingstick then
+		if movefloatingstick then
 			if event.touch.x < device_width/2 then
 				self.mvstickarrow:setAlpha(guialpha)
 				self.mvstickbase:setAlpha(guialpha)
@@ -382,7 +392,18 @@ function cgui:touches_begin(event)
 				self.mvstickkey:setPosition(event.touch.x, event.touch.y)
 				self.move_id = event.touch.id
 			end
-			
+		else
+			if self.mvstickbase:hitTestPoint(event.touch.x, event.touch.y) then
+				if getdistance(event.touch.x, event.touch.y, self.mvstickbase:getPosition()) <= self.mvstickbase:getWidth()/2 then
+					self.mvstickkey:setPosition(event.touch.x, event.touch.y)
+				else
+					local tx, ty = getrotation(self.mvstickbase:getWidth()/2, self.mvstickbase:getX(), self.mvstickbase:getY(), event.touch.x, event.touch.y)
+					self.mvstickkey:setPosition(self.mvstickbase:getX() + tx, self.mvstickbase:getY() + ty)
+				end
+				self.move_id = event.touch.id
+			end
+		end
+		if turretfloatingstick then
 			if event.touch.x > device_width/2 then
 				self.trstickarrow:setAlpha(guialpha)
 				self.trstickbase:setAlpha(guialpha)
@@ -395,16 +416,6 @@ function cgui:touches_begin(event)
 				self.trstick_start = true
 			end
 		else
-			if self.mvstickbase:hitTestPoint(event.touch.x, event.touch.y) then
-				if getdistance(event.touch.x, event.touch.y, self.mvstickbase:getPosition()) <= self.mvstickbase:getWidth()/2 then
-					self.mvstickkey:setPosition(event.touch.x, event.touch.y)
-				else
-					local tx, ty = getrotation(self.mvstickbase:getWidth()/2, self.mvstickbase:getX(), self.mvstickbase:getY(), event.touch.x, event.touch.y)
-					self.mvstickkey:setPosition(self.mvstickbase:getX() + tx, self.mvstickbase:getY() + ty)
-				end
-				self.move_id = event.touch.id
-			end
-			
 			if self.trstickbase:hitTestPoint(event.touch.x, event.touch.y) then
 				if getdistance(event.touch.x, event.touch.y, self.trstickbase:getPosition()) <= self.trstickbase:getWidth()/2 then
 					self.trstickkey:setPosition(event.touch.x, event.touch.y)
@@ -449,14 +460,14 @@ function cgui:touches_move(event)
 				local tx, ty = getrotation(self.trstickbase:getWidth()/2, self.trstickbase:getX(), self.trstickbase:getY(), event.touch.x, event.touch.y)
 				self.trstickkey:setPosition(self.trstickbase:getX() + tx, self.trstickbase:getY() + ty)
 			end
-			if floatingstick then
+			if turretfloatingstick then
 				if getdistance(event.touch.x, event.touch.y, self.trstickbase:getPosition()) > self.trstick_mxdist then
 					self.trstick_mxdist = getdistance(event.touch.x, event.touch.y, self.trstickbase:getPosition())
 				end
 			end
 		end
 		
-		if not floatingstick and event.touch.id == self.fire_id then
+		if not turretfloatingstick and event.touch.id == self.fire_id then
 			if getdistance(event.touch.x, event.touch.y, self.fire_pos.x, self.fire_pos.y) > self.fire_mxdist then
 				self.fire_mxdist = getdistance(event.touch.x, event.touch.y, self.fire_pos.x, self.fire_pos.y)
 			end
@@ -472,7 +483,7 @@ function cgui:touches_end(event)
 		self.rtn.right = 0
 		self.move_id = 0
 		self.mvstickkey:setPosition(self.mvstickbase:getX(), self.mvstickbase:getY())
-		if floatingstick then
+		if movefloatingstick then
 			self.mvstickarrow:setAlpha(0)
 			self.mvstickbase:setAlpha(0)
 			self.mvstickkey:setAlpha(0)
@@ -482,7 +493,7 @@ function cgui:touches_end(event)
 		self.rtn.tr = 0
 		self.turret_id = 0
 		self.trstickkey:setPosition(self.trstickbase:getX(), self.trstickbase:getY())
-		if floatingstick then
+		if turretfloatingstick then
 			self.trstickarrow:setAlpha(0)
 			self.trstickbase:setAlpha(0)
 			self.trstickkey:setAlpha(0)
@@ -492,7 +503,7 @@ function cgui:touches_end(event)
 			self.trstick_start = false
 		end
 	end
-	if not floatingstick and event.touch.id == self.fire_id then
+	if not turretfloatingstick and event.touch.id == self.fire_id then
 		if self.fire_mxdist < self.trstickbase:getWidth()/30 then
 			self.trstick_tap = true
 		end
@@ -549,6 +560,17 @@ function cgui:rtnv()
 	self.mkill:setPosition(device_width/2, self.gameover:getY() + (self.gameover:getHeight()/2) + (margin*2))
 	self.mwave:setPosition(device_width/2, self.mkill:getY() + (self.mkill:getHeight()/2) + (margin))
 	
+	self.rtn.left = 0
+	self.rtn.right = 0
+	self.rtn.tr = 0
+	self.rtn.fireb = false
+	
+	
+	
+	if controlmethod == 1 then
+	
+	
+	
 	local mvang = math.deg(math.atan2(self.mvstickkey:getX() - self.mvstickbase:getX(), self.mvstickbase:getY() - self.mvstickkey:getY())) %360
 	local trang = math.deg(math.atan2(self.trstickkey:getX() - self.trstickbase:getX(), self.trstickbase:getY() - self.trstickkey:getY())) %360
 	local mvfactor = math.abs(getdistance(self.mvstickkey:getX(), self.mvstickkey:getY(), self.mvstickbase:getX(), self.mvstickbase:getY()) / (self.mvstickbase:getWidth()/2))
@@ -556,10 +578,7 @@ function cgui:rtnv()
 	local trfactor = math.abs(getdistance(self.trstickkey:getX(), self.trstickkey:getY(), self.trstickbase:getX(), self.trstickbase:getY()) / (self.trstickbase:getWidth()/2))
 	local mtang = math.deg(self.tank:getRotation())%360
 	local ttang = math.deg(self.tank.turret:getAngle())%360
-	self.rtn.left = 0
-	self.rtn.right = 0
-	self.rtn.tr = 0
-	self.rtn.fireb = false
+	
 	
 	if mvfactor ~= 0 then
 		local mvtdiff = 0 - mtang
@@ -639,6 +658,46 @@ function cgui:rtnv()
 	local rtrfactor = math.cos(math.rad(trang - ttang - 90)) * trfactor
 	self.trstickarrow:setRotation(ttang)
 	self.rtn.tr = -rtrfactor
+	
+	
+	
+	elseif controlmethod == 2 then
+	
+	
+	
+	local mvang = math.deg(math.atan2(self.mvstickkey:getX() - self.mvstickbase:getX(), self.mvstickbase:getY() - self.mvstickkey:getY())) %360
+	local trang = math.deg(math.atan2(self.trstickkey:getX() - self.trstickbase:getX(), self.trstickbase:getY() - self.trstickkey:getY())) %360
+	local mvfactor = getdistance(self.mvstickkey:getX(), self.mvstickkey:getY(), self.mvstickbase:getX(), self.mvstickbase:getY()) / (self.mvstickbase:getWidth()/2)
+	local tnmvang = (2-math.abs(math.tan(math.rad(mvang))))/2
+	local trfactor = (self.trstickkey:getX() - self.trstickbase:getX()) / (self.trstickbase:getWidth()/2)
+	
+	if mvang>=60 and mvang<=120 then
+		self.rtn.left = mvfactor
+		self.rtn.right = -mvfactor
+	elseif mvang>=240 and mvang<=300 then
+		self.rtn.left = -mvfactor
+		self.rtn.right = mvfactor
+	elseif mvang>=0 and mvang<=90 then
+		self.rtn.left = mvfactor
+		self.rtn.right = tnmvang * mvfactor
+	elseif mvang>=90 and mvang<=180 then
+		self.rtn.left = -mvfactor
+		self.rtn.right = -tnmvang * mvfactor
+	elseif mvang>=180 and mvang<=270 then
+		self.rtn.right = -mvfactor
+		self.rtn.left = -tnmvang * mvfactor
+	elseif mvang>=270 and mvang<=360 then
+		self.rtn.right = mvfactor
+		self.rtn.left = tnmvang * mvfactor
+	end
+	
+	self.rtn.tr = -trfactor
+	
+	
+	
+	end
+	
+	
 	
 	if self.trstick_tap and not self.trstick_start and not self.fire_start then
 		if self.reloading then

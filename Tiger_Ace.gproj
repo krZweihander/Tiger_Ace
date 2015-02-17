@@ -1,5 +1,5 @@
 <project>
- <properties logicalHeight="480" encryptCode="0" mouseToTouch="1" assetsOnly="1" packageName="lee.thomas.tiger_ace" fps="60" retinaDisplay="0" touchToMouse="1" scaleMode="0" mouseTouchOrder="0" orientation="1" logicalWidth="320" encryptAssets="0" autorotation="0" iosDevice="0" architecture="1">
+ <properties packageName="lee.thomas.tiger_ace" logicalHeight="480" mouseToTouch="1" assetsOnly="1" retinaDisplay="0" touchToMouse="1" mouseTouchOrder="0" orientation="1" fps="60" scaleMode="0" logicalWidth="320" autorotation="0" encryptAssets="0" architecture="1" encryptCode="0" iosDevice="0">
   <imageScales/>
  </properties>
  <folder name="Sound">
@@ -121,24 +121,25 @@
    <file source="Sprite/BG/background_99.png"/>
   </folder>
   <folder name="GUI">
+   <file source="Sprite/GUI/mainscreen.png"/>
    <file source="Sprite/GUI/checkbutton_check.png"/>
    <file source="Sprite/GUI/checkbutton_base.png"/>
-   <file downsizing="1" source="Sprite/GUI/aim.png"/>
-   <file downsizing="1" source="Sprite/GUI/aiming_line.png"/>
-   <file downsizing="1" source="Sprite/GUI/alert.png"/>
+   <file source="Sprite/GUI/aim.png" downsizing="1"/>
+   <file source="Sprite/GUI/aiming_line.png" downsizing="1"/>
+   <file source="Sprite/GUI/alert.png" downsizing="1"/>
    <file source="Sprite/GUI/minusbutton.png"/>
-   <file downsizing="1" source="Sprite/GUI/pause.png"/>
+   <file source="Sprite/GUI/pause.png" downsizing="1"/>
    <file source="Sprite/GUI/plusbutton.png"/>
-   <file downsizing="1" source="Sprite/GUI/reload.png"/>
-   <file downsizing="1" source="Sprite/GUI/reloader.png"/>
-   <file downsizing="1" source="Sprite/GUI/setting.png"/>
+   <file source="Sprite/GUI/reload.png" downsizing="1"/>
+   <file source="Sprite/GUI/reloader.png" downsizing="1"/>
+   <file source="Sprite/GUI/setting.png" downsizing="1"/>
    <file source="Sprite/GUI/stick_base-arrow.png"/>
    <file source="Sprite/GUI/stick_base-arrow_turret.png"/>
    <file source="Sprite/GUI/stick_base.png"/>
    <file source="Sprite/GUI/stick_key.png"/>
   </folder>
   <folder name="Item">
-   <file downsizing="1" source="Sprite/Item/repairpack.png"/>
+   <file source="Sprite/Item/repairpack.png" downsizing="1"/>
   </folder>
   <folder name="Tank">
    <folder name="T3485">
@@ -157,7 +158,7 @@
     <file source="Sprite/Tank/Tiger/turret.png"/>
     <file source="Sprite/Tank/Tiger/turret_destroyed.png"/>
    </folder>
-   <file downsizing="1" source="Sprite/Tank/shell.png"/>
+   <file source="Sprite/Tank/shell.png" downsizing="1"/>
   </folder>
  </folder>
  <file source="cai.lua"/>

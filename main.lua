@@ -195,14 +195,18 @@ function load_setting()
 	
 	set_guiscale = dataSaver.loadValue("guiscale") or 1
 	set_guialpha = dataSaver.loadValue("guialpha") or 0.5
-	set_floatingstick = dataSaver.loadValue("floatingstick") or true
+	set_movefloatingstick = dataSaver.loadValue("movefloatingstick") or true
+	set_turretfloatingstick = dataSaver.loadValue("turretfloatingstick") or true
+	set_controlmethod = dataSaver.loadValue("controlmethod") or 1
 	--set_guiscale = 1
 	--set_guialpha = 0.5
 	
 	guiscale = default_guiscale * set_guiscale
 	guialpha = set_guialpha
 	margin = 5 * guiscale
-	floatingstick = set_floatingstick
+	movefloatingstick = set_movefloatingstick
+	turretfloatingstick = set_turretfloatingstick
+	controlmethod = set_controlmethod
 end
 
 actors = {}
