@@ -145,12 +145,15 @@ function cgui:init()
 	
 	self.start_button = Sprite.new()
 	self.start_button:setScale(guiscale)
-	self.start_button.text = TextField.new(nil, "Start")
+	--[[self.start_button.text = TextField.new(nil, "Start")
 	self.start_button.sprite = Shape.new()
 	self.start_button.sprite:setFillStyle(Shape.SOLID, 0x00ff00)
 	self.start_button.sprite:drawbox(0, 0, self.start_button.text:getWidth() + 20, self.start_button.text:getHeight() + 20)
 	self.start_button:addSprite(self.start_button.sprite)
-	self.start_button:addText(self.start_button.text)
+	self.start_button:addText(self.start_button.text)]]--
+	self.start_button.sprite = Bitmap.new(Texture.new("Sprite/GUI/startbutton.png"))
+	self.start_button:setScale(2/3)
+	self.start_button:addSprite(self.start_button.sprite)
 	self.main_gui:addChild(self.start_button)
 	
 	self.startguidetext = Sprite.new()
@@ -320,6 +323,8 @@ function cgui:guisetposition()
 	self.settingbutton:setPosition(margin + (self.settingbutton:getWidth()/2), device_height - margin - (self.settingbutton:getHeight()/2))
 	
 	self.startguidetext:setPosition(device_width/2, device_height/2)
+	
+	self.trstickarrow:setRotation(0)
 end
 
 function cgui:touches_begin(event)

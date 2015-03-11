@@ -348,5 +348,8 @@ function csetting:end_setting()
 	
 	dataSaver.saveValue("guiscale", set_guiscale)
 	dataSaver.saveValue("guialpha", set_guialpha)
+	dataSaver.saveValue("movefloatingstick", set_movefloatingstick)
+	dataSaver.saveValue("turretfloatingstick", set_turretfloatingstick)
+	dataSaver.saveValue("controlmethod", set_controlmethod)
 	
 end
